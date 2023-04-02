@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda | Vamos de Férias</title>
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <span>Agenda de férias</span>
+      <button id="btnRelatorio">Gerar Relatório</button>
+      <button onclick="openModal()" id="new">Incluir</i></button>
+      
+    </div>
+
+    <div class="divTable">
+      <table>
+        <thead>
+          <tr class="row-menu">
+            <th>Nome do funcionário</th>
+            <th>Data de Saída</th>
+            <th>Data de Retorno</th>
+            <th class="acao">Editar</th>
+            <th class="acao">Excluir</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="modal-container">
+      <div class="modal">
+        <div class="header">
+          <span>Formulário de Férias</span>
+        </div>
+        <form>
+          <label for="m-nome">Nome do Funcionário</label>
+          <input id="m-nome" type="text" required />
+  
+          <label for="m-ferias">Data de Saida</label>
+          <input id="m-ferias" type="date" required />
+  
+          <label for="m-retorno">Data de Retorno</label>
+          <input id="m-retorno" type="date" required />
+          <button id="btnSalvar">Salvar</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>

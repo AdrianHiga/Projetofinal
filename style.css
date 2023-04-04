@@ -39,10 +39,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 8px 16px 24px;
 }
 
-.header span {
+.header h2 {
   font-weight: 800;
   font-size: 1.5rem;
   word-break: break-all;
@@ -55,7 +56,20 @@ button {
   border-radius: 5px;
   border: none;
   color: white;
-  background-color: #3dcbb1;
+}
+
+#new {
+  background-color: #158280;
+  margin-left: 8px;
+}
+
+#btnRelatorio {
+  background-color: #7A58B8;
+}
+
+#btnRelatorio::before {
+  content: '\2913';
+  margin-right: 8px;
 }
 
 #new::before{
@@ -160,7 +174,7 @@ tbody tr td.acao {
   padding: 8px; 
   width: 100%;
   border: none;
-  background-color: #3dcbb1;
+  background-color: #158280;
   color: white;
   font-size: 1rem;
 }
@@ -237,8 +251,9 @@ tr td{
     padding: 0 16px;
   }
   
-  .header span {
+  .header h2 {
     font-size: 1.25rem;
+    margin: 0 auto 16px;
   }
 
   thead tr th.acao {
@@ -284,7 +299,6 @@ tr td{
   }
 
   .header{
-    padding-left: 0;
-    padding-right: 0;
+    padding: 8px 0 16px;
   }
 }

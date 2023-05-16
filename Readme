@@ -35,7 +35,7 @@ Editar um registro de férias: Na tabela, clique no botão "Editar" corresponden
 
 Excluir um registro de férias: Na tabela, clique no botão "Excluir" correspondente ao registro que deseja remover. Uma confirmação será solicitada antes de excluir o registro.
 
-Gerar um relatório: Clique no botão "Gerar Relatório" para obter um relatório dos registros de férias. O relatório será exibido no console do navegador.
+Gerar um relatório: Clique no botão "Gerar Relatório" para obter um relatório dos registros de férias. O relatório será exibido no bloco de notas do seu computador.
 
 Personalização
 Caso você deseje personalizar o estilo da aplicação, você pode modificar o arquivo "style.css". Consulte a documentação do CSS para obter mais informações sobre como estilizar o HTML.

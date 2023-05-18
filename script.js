@@ -89,7 +89,8 @@ function loadItens() {
 }
 
 function getItensBD() {
-  return JSON.parse(Cookies.get('dbfunc')) || [];
+  let dbfunc = Cookies.get('dbfunc');
+  return dbfunc ? JSON.parse(dbfunc) : [];
 }
 
 function setItensBD() {
@@ -131,6 +132,7 @@ function gerarRelatorio() {
   // Gera o PDF a partir do HTML
   html2pdf().set(opt).from(relatorio).save();
 }
+
 btnRelatorio.addEventListener("click", gerarRelatorio);
 
 loadItens();

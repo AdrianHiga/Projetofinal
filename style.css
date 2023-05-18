@@ -60,12 +60,12 @@ button {
 }
 
 #new {
-  background-color: #158280;
+  background-color: #4adf5e;
   margin-left: 8px;
 }
 
 #btnRelatorio {
-  background-color: #5803f7;
+  background-color: #593c8f;
 }
 
 #btnRelatorio::before {

@@ -10,7 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bxslider/dist/jquery.bxslider.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
 </head>
 
 <body>
@@ -47,10 +51,10 @@
         <form>
           <label for="m-nome">Nome do Funcionário</label>
           <input id="m-nome" type="text" required />
-  
+
           <label for="m-ferias">Data de Saida</label>
           <input id="m-ferias" type="date" required />
-  
+
           <label for="m-retorno">Data de Retorno</label>
           <input id="m-retorno" type="date" required />
           <button id="btnSalvar">Salvar</button>
@@ -59,6 +63,7 @@
     </div>
 
   </div>
+
   <script src="./script.js"></script>
 </body>
 

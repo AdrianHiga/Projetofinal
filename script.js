@@ -40,13 +40,13 @@ function deleteItem(index) {
   loadItens();
 }
 
-function insertItem(item, index) {
+function insertItem(item, index, formattedFuncao, formattedSalario) {
   let tr = document.createElement('tr');
 
   tr.innerHTML = `
     <td>${item.nome}</td>
-    <td class="list-date">${item.funcao}</td>
-    <td class="list-date">${item.salario}</td>
+    <td class="list-date">${formattedFuncao}</td>
+    <td class="list-date">${formattedSalario}</td>
     <td class="acao">
       <button title="Editar" onclick="editItem(${index})"><i class='bx bx-edit' ></i></button>
     </td>
@@ -59,6 +59,11 @@ function insertItem(item, index) {
 
 btnSalvar.onclick = e => {
   if (sNome.value == '' || sFuncao.value == '' || sSalario.value == '') {
+    return;
+  }
+
+  if (!isValidDate(sFuncao.value) || !isValidDate(sSalario.value)) {
+    alert('Data inválida. O formato deve ser "dd/mm/aaaa" no ano atual.');
     return;
   }
 
@@ -82,49 +87,65 @@ btnSalvar.onclick = e => {
 function loadItens() {
   tbody.innerHTML = '';
   itens.forEach((item, index) => {
-    insertItem(item, index);
+    const formattedFuncao = formatDate(item.funcao);
+    const formattedSalario = formatDate(item.salario);
+    insertItem(item, index, formattedFuncao, formattedSalario);
   });
-
-  formatDate();
 }
 
 function getItensBD() {
-  return JSON.parse(localStorage.getItem('dbfunc')) || [];
+  return JSON.parse(Cookies.get('dbfunc')) || [];
 }
 
 function setItensBD() {
-  localStorage.setItem('dbfunc', JSON.stringify(itens));
+  Cookies.set('dbfunc', JSON.stringify(itens));
 }
 
-function formatDate() {
-  const listDate = document.querySelectorAll('.list-date');
+function formatDate(date) {
+  const parts = date.split('-');
+  const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+  return formattedDate;
+}
 
-  for (var value of listDate.values()) {
-    const date = value.innerHTML.split('-');
+function isValidDate(date) {
+  const pattern = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+  if (!pattern.test(date)) return false;
 
-    let formatedDate = `${date[2]}/${date[1]}/${date[0]}`;
-
-    value.innerHTML = formatedDate;
-  }
+  const [_, day, month, year] = date.match(pattern);
+  const parsedDate = new Date(`${year}-${month}-${day}`);
+  return parsedDate instanceof Date && !isNaN(parsedDate);
 }
 
 function gerarRelatorio() {
   const itens = getItensBD();
-  let relatorio = "Nome do funcionário\tData de Saída\tData de Retorno\n";
+  let relatorio = `
+    <h1 style="text-align: center;">Relatório de Férias</h1><br>
+    <table style="margin: 0 auto;">
+      <tr>
+        <th>Nome do funcionário</th>
+        <th>Data de Saída</th>
+        <th>Data de Retorno</th>
+      </tr>
+  `;
 
   itens.forEach((item) => {
-    relatorio += `${item.nome}\t${item.funcao}\t${item.salario}\n`;
+    relatorio += `<tr style="text-align: center;><td>${item.nome}</td><td>${formatDate(item.funcao)}</td><td>${formatDate(item.salario)}</td></tr>`;
   });
 
-  const link = document.createElement("a");
-  link.href = "data:text/plain;charset=utf-8," + encodeURIComponent(relatorio);
-  link.download = "relatorio.txt";
-  link.style.display = "none";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
+  relatorio += '</table>';
 
+  // Configurações para gerar o PDF
+  const opt = {
+    margin: 10,
+    filename: 'relatorio.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+
+  // Gera o PDF a partir do HTML
+  html2pdf().set(opt).from(relatorio).save();
+}
 btnRelatorio.addEventListener("click", gerarRelatorio);
 
 loadItens();

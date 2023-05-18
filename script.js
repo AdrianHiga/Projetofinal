@@ -62,11 +62,6 @@ btnSalvar.onclick = e => {
     return;
   }
 
-  if (!isValidDate(sFuncao.value) || !isValidDate(sSalario.value)) {
-    alert('Data inválida. O formato deve ser "dd/mm/aaaa" no ano atual.');
-    return;
-  }
-
   e.preventDefault();
 
   if (id !== undefined) {
@@ -107,17 +102,7 @@ function formatDate(date) {
   return formattedDate;
 }
 
-function isValidDate(date) {
-  const pattern = /^(\d{2})\/(\d{2})\/(\d{4})$/;
-  if (!pattern.test(date)) return false;
-
-  const [_, day, month, year] = date.match(pattern);
-  const parsedDate = new Date(`${year}-${month}-${day}`);
-  return parsedDate instanceof Date && !isNaN(parsedDate);
-}
-
 function gerarRelatorio() {
-  const itens = getItensBD();
   let relatorio = `
     <h1 style="text-align: center;">Relatório de Férias</h1><br>
     <table style="margin: 0 auto;">
@@ -129,7 +114,7 @@ function gerarRelatorio() {
   `;
 
   itens.forEach((item) => {
-    relatorio += `<tr style="text-align: center;><td>${item.nome}</td><td>${formatDate(item.funcao)}</td><td>${formatDate(item.salario)}</td></tr>`;
+    relatorio += `<tr  style="text-align: center;"><td>${item.nome}</td><td>${formatDate(item.funcao)}</td><td>${formatDate(item.salario)}</td></tr>`;
   });
 
   relatorio += '</table>';

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&family=Roboto:wght@100;300;400;500;700;900&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
 
-html{
+html {
   font-size: 16px;
 }
 
@@ -39,44 +39,59 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 8px 16px 24px;
 }
 
-.header span {
+.header h2 {
   font-weight: 800;
   font-size: 1.5rem;
   word-break: break-all;
   color: #101e47;
 }
 
-#new, #btnRelatorio {
+#new,
+#btnRelatorio {
   font-size: 1rem;
   padding: 8px;
   border-radius: 5px;
   border: none;
   color: white;
-  background-color: #3dcbb1;
 }
 
-#new::before{
+#new {
+  background-color: #158280;
+  margin-left: 8px;
+}
+
+#btnRelatorio {
+  background-color: #5803f7;
+}
+
+#btnRelatorio::before {
+  content: '\2913';
+  margin-right: 8px;
+}
+
+#new::before {
   content: '\002B';
   margin-right: 8px;
 }
 
 .divTable {
-  overflow:auto;
+  overflow: auto;
   height: 100%;
   max-height: 80%;
 }
 
 .divTable::-webkit-scrollbar {
   width: 12px;
-  background-color: rgb(245, 245, 245); 
+  background-color: rgb(245, 245, 245);
 }
 
 .divTable::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: darkgray; 
+  background-color: darkgray;
 }
 
 table {
@@ -101,7 +116,7 @@ tbody tr {
 }
 
 thead tr th.acao {
-  width: 100px!important;
+  width: 100px !important;
   text-align: center;
 }
 
@@ -142,7 +157,7 @@ tbody tr td.acao {
 .modal input {
   width: 100%;
   outline: none;
-  padding: 8px; 
+  padding: 8px;
   width: 100%;
   margin-bottom: 16px;
   border-top: none;
@@ -152,15 +167,15 @@ tbody tr td.acao {
   font-size: 1rem;
 }
 
-.modal button  {
+.modal button {
   width: 100%;
   margin: 10px auto;
   outline: none;
-  border-radius: 20px; 
-  padding: 8px; 
+  border-radius: 20px;
+  padding: 8px;
   width: 100%;
   border: none;
-  background-color: #3dcbb1;
+  background-color: #158280;
   color: white;
   font-size: 1rem;
 }
@@ -180,6 +195,7 @@ tbody tr td.acao {
     opacity: 0;
     transform: translate3d(0, -60px, 0);
   }
+
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
@@ -200,7 +216,7 @@ td button i:first-child {
   margin-right: 10px;
 }
 
-.row-menu th{
+.row-menu th {
   padding: 16px;
   border-top: 1px solid #e0e2e8;
   border-bottom: 1px solid #e0e2e8;
@@ -219,15 +235,15 @@ td button i:first-child {
   border-bottom-right-radius: 10px;
 }
 
-tr td{
+tr td {
   padding: 8px 16px;
 }
 
-.bx-edit{
+.bx-edit {
   color: #0675BA;
 }
 
-.bx-trash{
+.bx-trash {
   color: #C34F4F;
 }
 
@@ -236,17 +252,18 @@ tr td{
     font-size: 10px;
     padding: 0 16px;
   }
-  
-  .header span {
+
+  .header h2 {
     font-size: 1.25rem;
+    margin: 0 auto 16px;
   }
 
   thead tr th.acao {
-    width: auto!important;
+    width: auto !important;
   }
-  
+
   td button i {
-    font-size: 20px!important;
+    font-size: 20px !important;
   }
 
   td button i:first-child {
@@ -254,37 +271,37 @@ tr td{
   }
 
   .modal {
-    width: 90%!important;
+    width: 90% !important;
   }
 
   .modal label {
     font-size: 1rem;
   }
 
-  .modal input{
+  .modal input {
     font-size: 0.85rem;
   }
 }
 
 @media (max-width: 768px) {
+
   thead tr th,
-  tbody tr td{
+  tbody tr td {
     white-space: nowrap;
   }
 
-  .row-menu th{
-    padding: 16px 16px 16px 0 ;
+  .row-menu th {
+    padding: 16px 16px 16px 0;
     border-top: 1px solid #e0e2e8;
     border-bottom: 1px solid #e0e2e8;
     color: #101e47;
   }
 
-  tr td{
+  tr td {
     padding: 8px 16px 8px 0;
   }
 
-  .header{
-    padding-left: 0;
-    padding-right: 0;
+  .header {
+    padding: 8px 0 16px;
   }
 }

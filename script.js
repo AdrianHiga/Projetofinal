@@ -34,12 +34,6 @@ function editItem(index) {
   openModal(true, index);
 }
 
-// function deleteItem(index) {
-//   itens.splice(index, 1);
-//   setItensBD();
-//   loadItens();
-// }
-
 function deleteItem(index) {
   const confirmDelete = confirm("Tem certeza que deseja excluir este item?");
   if (confirmDelete) {
@@ -48,7 +42,6 @@ function deleteItem(index) {
     loadItens();
   }
 }
-
 
 function insertItem(item, index, formattedFuncao, formattedSalario) {
   let tr = document.createElement('tr');
@@ -74,19 +67,22 @@ btnSalvar.onclick = e => {
 
   e.preventDefault();
 
-  if (id !== undefined) {
-    itens[id].nome = sNome.value;
-    itens[id].funcao = sFuncao.value;
-    itens[id].salario = sSalario.value;
-  } else {
-    itens.push({ 'nome': sNome.value, 'funcao': sFuncao.value, 'salario': sSalario.value });
+  const confirmEdit = confirm("Tem certeza que deseja salvar?");
+  if (confirmEdit) {
+    if (id !== undefined) {
+      itens[id].nome = sNome.value;
+      itens[id].funcao = sFuncao.value;
+      itens[id].salario = sSalario.value;
+    } else {
+      itens.push({ 'nome': sNome.value, 'funcao': sFuncao.value, 'salario': sSalario.value });
+    }
+
+    setItensBD();
+
+    modal.classList.remove('active');
+    loadItens();
+    id = undefined;
   }
-
-  setItensBD();
-
-  modal.classList.remove('active');
-  loadItens();
-  id = undefined;
 };
 
 function loadItens() {
@@ -114,6 +110,11 @@ function formatDate(date) {
 }
 
 function gerarRelatorio() {
+  if (itens.length === 0) {
+    alert("Não há dados para gerar o relatório.");
+    return;
+  }
+
   let relatorio = `
     <h1 style="text-align: center;">Relatório de Férias</h1><br>
     <table style="margin: 0 auto;">

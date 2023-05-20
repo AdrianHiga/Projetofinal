@@ -9,7 +9,7 @@ O Projeto Final é um projeto desenvolvido como parte do curso de Ciência da Co
 - Cadastro de funcionários.
 - Cadastro de data de saida e retorno.
 - Exibição de funcionários cadastrados.
-- Exibição exibição de data de saída e retorno.
+- Exibição de data de saída e de retorno.
 - Edição dos dados de um funcionário.
 - Exclusão de um funcionário.
 - Gerador de relatórios.

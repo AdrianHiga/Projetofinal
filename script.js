@@ -34,11 +34,21 @@ function editItem(index) {
   openModal(true, index);
 }
 
+// function deleteItem(index) {
+//   itens.splice(index, 1);
+//   setItensBD();
+//   loadItens();
+// }
+
 function deleteItem(index) {
-  itens.splice(index, 1);
-  setItensBD();
-  loadItens();
+  const confirmDelete = confirm("Tem certeza que deseja excluir este item?");
+  if (confirmDelete) {
+    itens.splice(index, 1);
+    setItensBD();
+    loadItens();
+  }
 }
+
 
 function insertItem(item, index, formattedFuncao, formattedSalario) {
   let tr = document.createElement('tr');

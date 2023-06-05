@@ -42,10 +42,6 @@ Se você deseja contribuir para este projeto, siga as etapas abaixo:
 
 Se você tiver alguma dúvida ou sugestão sobre o Projeto Final, entre em contato conosco pelo e-mail: adrianmorais2018@hotmail.com.
 
-## Acesse o site
-
-Você pode acessar o site do Projeto Final [aqui](https://adrianhiga.github.io/Projetofinal/).
-
 
 
 
